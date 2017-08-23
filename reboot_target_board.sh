@@ -48,6 +48,7 @@ install_UC_image () {
     expect "password:"
     send "$passwd\r"
     set timeout -1
+    send "\r"
     # dd image
     expect $prompt
     send "xzcat ~/$image | sudo dd of=/dev/mmcblk0 bs=32M status=progress\r"
