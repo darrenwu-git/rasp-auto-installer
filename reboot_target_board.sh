@@ -43,19 +43,16 @@ install_UC_image () {
     $target_login
     send "\r"
     expect $prompt
-    # temporarily set timeout to 10 mins
-    # due to copy image takes more time
-    set timeout 600
+    # download image
     send "scp $serverip:$image_path/$image ~/\r"
     expect "password:"
     send "$passwd\r"
+    set timeout -1
+    # dd image
     expect $prompt
-    send "\r"
+    send "xzcat ~/$image | sudo dd of=/dev/mmcblk0 bs=32M status=progress\r"
+    set timeout -1
     expect $prompt
-    send "xzcat ~/$image | sudo dd of=/dev/mmcblk0 bs=32M\r"
-    send "\r\r"
-    sleep 60
-    # reset timeout to 1 min
     $target_exit
     set timeout 60
     close
