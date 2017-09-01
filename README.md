@@ -1,10 +1,10 @@
 Hardware requirements
 ====================
-- raspberry pi2
+- raspberry pi2(control host)
     - SD card with raspbian image
-- raspberry pi3
-    - SD card for Ubuntu core recovery testing
-    - USB stick(raspbian image) for Ubuntu core installer
+- raspberry pi3(provisioning target board)
+    - SD card for provision image usage
+    - USB stick(raspbian image) for SD card image installer
 - Dupont cables
     - Pi2 GPIO 2 <-> Pi3 run reset pin
     - Pi2 GND <-> Pi3 GND
